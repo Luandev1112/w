@@ -1,0 +1,18 @@
+
+<Files ~ "\.(html|php|jpe?g|gif|png|css|js|pdf)$">
+Header set Pragma no-cache
+Header set Cache-Control no-cache
+</Files>
+
+ErrorDocument 404 https://www.isesaki-w.com/
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^isesaki-w\.com$
+RewriteRule ^(.*)$ https://www.isesaki-w.com/$1 [R=301,L]
+
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.isesaki-w.com/$1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^.*/index.php
+RewriteRule ^(.*)index.php$ https://www.isesaki-w.com/$1 [R=301,L]
+
